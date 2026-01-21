@@ -11,15 +11,19 @@ use App\Http\Controllers\User\EventController as UserEventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
+// untuk menampilkan halaman home 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Events
+// untuk menampilkan semua daftar event
 Route::get('/events/{event}', [UserEventController::class, 'show'])->name('events.show');
 
 //orders
+//untuk menampilkan semua order dan detail order
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+//untuk menampilkan detail order berdasarkan id order
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+//untuk menyimpan order baru
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 
 Route::middleware('auth')->group(function () {
@@ -38,6 +42,9 @@ Route::middleware('auth')->group(function () {
 
         // Tiket Management 
         Route::resource('tickets', TiketController::class);
+
+        // Ticket Type Management
+        Route::resource('ticket-types', \App\Http\Controllers\Admin\TicketTypeController::class);
         
         // Histories
         Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');

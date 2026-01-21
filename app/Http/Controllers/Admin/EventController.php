@@ -63,8 +63,9 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $categories = Kategori::all();
         $tickets = $event->tikets;
+        $ticketTypes = \App\Models\TicketType::all();
 
-        return view('admin.event.show', compact('event', 'categories', 'tickets'));
+        return view('admin.event.show', compact('event', 'categories', 'tickets', 'ticketTypes'));
     }
 
     /**

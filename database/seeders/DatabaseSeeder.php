@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             UserSeeder::class,
             EventSeeder::class,
+            TicketTypeSeeder::class,
             TicketSeeder::class,
             OrderSeeder::class,
         ]);

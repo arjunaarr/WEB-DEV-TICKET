@@ -9,10 +9,15 @@ class Kategori extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
         'nama',
     ];
 
+    /**
+     * Relasi ke model Event.
+     * Satu kategori bisa menampung banyak event.
+     */
     public function events()
     {
         return $this->hasMany(Event::class);

@@ -9,6 +9,7 @@ class Tiket extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
         'event_id',
         'tipe',
@@ -16,16 +17,28 @@ class Tiket extends Model
         'stok',
     ];
 
+    /**
+     * Relasi ke model Event.
+     * Tiket ini milik event mana.
+     */
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
+    /**
+     * Relasi ke model DetailOrder.
+     * Tiket ini bisa muncul di banyak detail order (history pembelian).
+     */
     public function detailOrders()
     {
         return $this->hasMany(DetailOrder::class);
     }
 
+    /**
+     * Relasi Many-to-Many ke model Order.
+     * Mengetahui order mana saja yang membeli tiket ini.
+     */
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'detail_orders')

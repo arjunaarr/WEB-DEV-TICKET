@@ -22,6 +22,10 @@ class HomeController extends Controller
 
         $events = $eventsQuery->get();
 
+        if ($request->ajax()) {
+            return view('partials.event-list', compact('events'));
+        }
+
         return view('home', compact('events', 'categories'));
     }
 }
