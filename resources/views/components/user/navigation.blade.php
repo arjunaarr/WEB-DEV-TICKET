@@ -40,10 +40,10 @@
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            onclick="event.preventDefault(); this.nextElementSibling.submit();">
                                 Logout
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                        <form action="{{ route('logout') }}" method="POST" class="hidden">
                             @csrf
                         </form>
                     </li>
