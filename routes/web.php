@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\TiketController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LokasiController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\User\EventController as UserEventController;
 use App\Http\Controllers\ProfileController;
@@ -43,8 +44,13 @@ Route::middleware('auth')->group(function () {
         // Tiket Management 
         Route::resource('tickets', TiketController::class);
 
+         // lokasi management
+        Route::resource('lokasi', \App\Http\Controllers\Admin\LokasiController::class);
+
+
         // Ticket Type Management
         Route::resource('ticket-types', \App\Http\Controllers\Admin\TicketTypeController::class);
+    
         
         // Histories
         Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');

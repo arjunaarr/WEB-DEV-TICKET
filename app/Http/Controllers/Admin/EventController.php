@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\Lokasi;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -72,11 +73,14 @@ class EventController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        $event = Event::findOrFail($id);
-        $categories = Kategori::all();
-        return view('admin.event.edit', compact('event', 'categories'));
-    }
+{
+    $event = Event::findOrFail($id);
+    $categories = Kategori::all();
+    $lokasis = Lokasi::all(); // Ambil data lokasi dari database
+
+    // Kirim $lokasis ke view
+    return view('admin.event.edit', compact('event', 'categories', 'lokasis'));
+}
 
     /**
      * Update the specified resource in storage.

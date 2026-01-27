@@ -36,14 +36,20 @@
                             value="{{ $event->tanggal_waktu->format('Y-m-d\TH:i') }}" required />
                     </div>
 
-                    <!-- Lokasi -->
                     <div class="form-control">
-                        <label class="label">
-                            <span class="label-text font-semibold">Lokasi</span>
-                        </label>
-                        <input type="text" name="lokasi" placeholder="Contoh: Stadion Utama"
-                            class="input input-bordered w-full" value="{{ $event->lokasi }}" required />
-                    </div>
+    <label class="label">
+        <span class="label-text font-semibold">Lokasi</span>
+    </label>
+    <select name="lokasi_id" class="select select-bordered w-full" required>
+        <option value="" disabled>Pilih lokasi</option>
+        @foreach ($lokasis as $lokasi)
+            <option value="{{ $lokasi->id }}"
+                {{ $lokasi->id == $event->lokasi_id ? 'selected' : '' }}>
+                {{ $lokasi->nama }}
+            </option>
+        @endforeach
+    </select>
+</div>
 
                     <!-- Kategori -->
                     <div class="form-control">
